@@ -1175,6 +1175,144 @@ a {
     margin-top: 50px;
 }
 
+/* ---- Watch on Instagram card (for blocked embeds) ---- */
+.reel-link-card {
+    display: block;
+    width: 100%;
+    padding-top: 177.78%; /* 9:16 */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(26, 111, 255, 0.35);
+    box-shadow: var(--glow-blue), 0 20px 50px rgba(0,0,0,0.5);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.reel-link-card:hover {
+    border-color: rgba(0, 195, 255, 0.6);
+    box-shadow: var(--glow-strong), 0 30px 70px rgba(0,0,0,0.6);
+}
+
+.reel-link-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at 50% 40%, rgba(26,111,255,0.25) 0%, transparent 65%),
+        linear-gradient(160deg, #050d1a 0%, #0a1a35 50%, #050d1a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    transition: var(--transition);
+}
+
+.reel-link-card:hover .reel-link-bg {
+    background: 
+        radial-gradient(ellipse at 50% 40%, rgba(26,111,255,0.4) 0%, transparent 65%),
+        linear-gradient(160deg, #060f22 0%, #0d2145 50%, #060f22 100%);
+}
+
+.reel-play-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--gradient-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #fff;
+    box-shadow: var(--glow-strong);
+    transition: var(--transition);
+}
+
+.reel-link-card:hover .reel-play-btn {
+    transform: scale(1.12);
+    box-shadow: 0 0 40px rgba(26,111,255,0.9), 0 0 80px rgba(0,195,255,0.4);
+}
+
+.reel-link-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--silver);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.reel-ig-icon {
+    font-size: 1.8rem;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Gear Quote Block */
+.gear-quote {
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+.gear-quote-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    max-width: 780px;
+    background: var(--card-bg);
+    border: var(--border-blue);
+    border-radius: 24px;
+    padding: 44px 50px;
+    position: relative;
+    box-shadow: var(--glow-blue), 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.gear-quote-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-main);
+    border-radius: 0 0 4px 4px;
+    box-shadow: var(--glow-blue);
+}
+
+.gear-icon {
+    font-size: 2.4rem;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(26, 111, 255, 0.6));
+}
+
+.gear-quote-inner blockquote {
+    font-size: 1.18rem;
+    font-style: italic;
+    color: var(--silver);
+    line-height: 1.8;
+    font-family: var(--font-body);
+    quotes: none;
+    margin: 0;
+}
+
+.gear-brand {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--neon-blue);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
