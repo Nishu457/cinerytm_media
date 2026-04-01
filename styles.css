@@ -1314,6 +1314,93 @@ a {
 }
 
 /* ============================================================
+   THUMBNAILS SECTION
+   ============================================================ */
+.thumbnails-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbnails-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.thumbnail-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(26, 111, 255, 0.2);
+    transition: var(--transition);
+}
+
+.thumbnail-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 195, 255, 0.6);
+    box-shadow: var(--glow-strong), 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.thumb-img-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background: var(--card-bg);
+}
+
+.thumb-img-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.thumbnail-card:hover .thumb-img-wrap img {
+    transform: scale(1.05);
+}
+
+.thumb-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 12, 28, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+    font-size: 2.5rem;
+    color: var(--neon-blue);
+    text-shadow: var(--glow-blue);
+}
+
+.thumbnail-card:hover .thumb-overlay {
+    opacity: 1;
+}
+
+.thumbnails-cta {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.btn-youtube {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: var(--white);
+}
+
+.btn-youtube:hover {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+}
+
+/* ============================================================
+
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
@@ -1336,6 +1423,7 @@ a {
     }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .contact-poster-wrap { max-width: 100%; }
+    .thumbnails-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
 
 @media (max-width: 1024px) {
@@ -1352,6 +1440,7 @@ a {
     .cta-container { padding: 40px 22px; }
     .cta-content h2 { font-size: 2rem; }
     .reels-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+    .thumbnails-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
 }
 
 @media (max-width: 480px) {
