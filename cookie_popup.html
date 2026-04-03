@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Cookie Popup</title>
+    <!-- Importing Google Font (Inter) for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General page styles for demonstration */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- Popup Styling Starts Here --- */
+        
+        /* Dark Overlay Background */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Active class to trigger appearance */
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Centered Popup Box */
+        .popup-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            transform: translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .popup-overlay.show .popup-container {
+            transform: translateY(0);
+        }
+
+        /* Typography inside Popup */
+        .popup-container h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .popup-container p {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        /* Accent Button */
+        .popup-btn {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .popup-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .popup-btn:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Placeholder Content -->
+    <h1>Welcome to the Website</h1>
+    <p style="margin-top: 10px; color: #666;">Stay on the page for 5 seconds to see the popup.</p>
+
+    <!-- Popup HTML Structure -->
+    <div class="popup-overlay" id="cookieOverlay">
+        <div class="popup-container">
+            <h2>Welcome</h2>
+            <p>Please accept cookies to continue</p>
+            <button class="popup-btn" id="acceptBtn">Accept</button>
+        </div>
+    </div>
+
+    <!-- Popup Logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const overlay = document.getElementById("cookieOverlay");
+            const acceptBtn = document.getElementById("acceptBtn");
+            const storageKey = "hasAcceptedCookies";
+
+            // Check if the user has ALREADY accepted the cookies
+            if (!localStorage.getItem(storageKey)) {
+                // Wait 5 seconds (5000 milliseconds) before showing
+                setTimeout(() => {
+                    overlay.classList.add("show");
+                }, 5000);
+            }
+
+            // When user clicks the "Accept" button
+            acceptBtn.addEventListener("click", () => {
+                // Store preference in localStorage
+                localStorage.setItem(storageKey, "true");
+                
+                // Hide the popup elegantly
+                overlay.classList.remove("show");
+            });
+        });
+    </script>
+</body>
+</html>
